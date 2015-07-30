@@ -8,10 +8,10 @@
 
 int main(int n, char *args[]){
 
-	chunk *c = createChunk(5, 6);
-	printf("%d\n", c->grid[6][4]->x);
+	world *w = create_world();
+	printf("%d\n", w->grid[6][4]->x);
 
-	free(c);
+	free(w);
 
 	
 }

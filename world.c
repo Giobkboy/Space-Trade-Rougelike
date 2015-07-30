@@ -8,7 +8,7 @@
  * the newly genrated world in to heep mem so i dont cluter the
  * stack
  */
-tile * createTile(int x, int y){
+tile * create_tile(int x, int y){
 
 	tile *t;
 	t = (tile *) malloc(sizeof(tile));
@@ -19,7 +19,7 @@ tile * createTile(int x, int y){
 	return t; 
 }
 
-chunk * createChunk(int cx, int cy){
+chunk * create_chunk(int cx, int cy){
 
 	chunk *c;
 	c = (chunk *) malloc(sizeof(chunk));
@@ -28,7 +28,7 @@ chunk * createChunk(int cx, int cy){
 
 	for(x = 0; x < MAXTILE; x++){
 		for(y = 0; y < MAXTILE; y++){
-			c->grid[x][y] = createTile(x, y);
+			c->grid[x][y] = create_tile(x, y);
 		}
 	}
 
@@ -38,7 +38,7 @@ chunk * createChunk(int cx, int cy){
 	return c;
 }
 
-world * createWorld(){
+world * create_world(){
 
 	world *w;
 	w = (world *) malloc(sizeof(world));
@@ -47,7 +47,7 @@ world * createWorld(){
 
 	for(x = 0; x < MAXCHUNK; x++){
 		for(y = 0; y < MAXCHUNK; y++){
-			w->grid[x][y] = createChunk(x, y);
+			w->grid[x][y] = create_chunk(x, y);
 		}
 	}
 

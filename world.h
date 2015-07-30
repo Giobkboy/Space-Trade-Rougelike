@@ -37,9 +37,9 @@ typedef struct {
 
 } world;
 
-tile * createTile(int x, int y);
-chunk * createChunk(int x, int y);
-world * createWorld();
+tile * create_tile(int x, int y);
+chunk * create_chunk(int x, int y);
+world * create_world();
 
 //int setEntity(int x, int y);
 
