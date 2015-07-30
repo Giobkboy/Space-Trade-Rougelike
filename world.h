@@ -11,7 +11,7 @@ typedef struct {
 } tile;
 
 typedef struct {
-	int 	x, y;
+	int 	x, y, e_index;
 	tile 	*grid[MAXTILE][MAXTILE];
 	entity 	*entitys[MAXTILE*MAXTILE];
 } chunk;
@@ -31,6 +31,6 @@ world * create_world();
 void deconstruct_chunk(chunk *c);
 void deconstruct_world(world *w);
 
-//int setEntity(int x, int y);
+int add_entity(world *w, int x, int y, entity_type type);
 
 #endif //WORLD_H_

@@ -26,5 +26,6 @@ typedef struct
 
 } entity;
 
+entity * create_entity(int x, int y, entity_type type);
 
 #endif //ENTITY_H_

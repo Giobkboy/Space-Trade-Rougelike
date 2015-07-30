@@ -16,6 +16,7 @@ tile * create_tile(int x, int y){
 
 	t->x = x;
 	t->y = y; 
+	t->e = NULL;
 
 	return t; 
 }
@@ -35,6 +36,7 @@ chunk * create_chunk(int cx, int cy){
 
 	c->x = cx; 
 	c->y = cy;
+	c->e_index = 0;
 
 	return c;
 }
@@ -88,11 +90,17 @@ void deconstruct_world(world *w){
 	}
 }
 
-/*
-int setEntity(world *w, int x, int y){
-	chunk *c = &w->loadedChunk;
-	entity e =  {x, y};
 
-	c->grid[x][y]->e = &e
+int add_entity(world *w, int x, int y, entity_type type){
+
+	chunk *c = w->loadedChunk;
+	entity *new_e = create_entity(x, y, type);
+
+	if(c->grid[x][y]->e == NULL){
+		c->grid[x][y]->e = new_e;
+		c->entitys[c->e_index] = new_e; 
+	}else{
+		return -1;
+	}
+	return 0;
 }
-*/
