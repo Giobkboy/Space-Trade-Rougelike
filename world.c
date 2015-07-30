@@ -1,4 +1,5 @@
 #include <stdlib.h>
+#include "entity.h"
 #include "world.h"
 
 //change the seize of the chuncks and world if you want
