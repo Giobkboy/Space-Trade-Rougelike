@@ -28,7 +28,7 @@ typedef struct {
 typedef struct {
 	int 	x, y;
 	tile 	*grid[MAXTILE][MAXTILE];
-	//entity 	*entitys[100];
+	entity 	*entitys[MAXTILE*MAXTILE];
 } chunk;
 
 typedef struct {
@@ -40,6 +40,8 @@ typedef struct {
 tile * create_tile(int x, int y);
 chunk * create_chunk(int x, int y);
 world * create_world();
+void deconstruct_chunk(chunk *c);
+void deconstruct_world(world *w);
 
 //int setEntity(int x, int y);
 

@@ -55,6 +55,38 @@ world * create_world(){
 	return w;
 }
 
+
+/*
+ * these methods alow you to free up the memory
+ * when the program is done, realy just a little
+ * house keeping, you know 
+ */
+
+void deconstruct_chunk(chunk *c){
+
+	int x, y, i;
+	for(x = 0; x < MAXTILE; x++){
+		for(y = 0; y < MAXTILE; y++){
+			free(c->grid[x][y]);
+		}
+	}
+
+	for(i = 0; i < (MAXTILE*MAXTILE); i++){
+		free(c->entitys[i]);
+	}
+
+}
+
+void deconstruct_world(world *w){
+
+	int x, y;
+	for(x = 0; x < MAXCHUNK; x++){
+		for(y = 0; y < MAXCHUNK; y++){
+			deconstruct_chunk(w->grid[x][y]);
+		}
+	}
+}
+
 /*
 int setEntity(world *w, int x, int y){
 	chunk *c = &w->loadedChunk;
