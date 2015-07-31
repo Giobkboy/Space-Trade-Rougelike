@@ -13,5 +13,4 @@ int main(int n, char *args[]){
 
 	deconstruct_world(w);
 
-	
 }
