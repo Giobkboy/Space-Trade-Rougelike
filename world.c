@@ -1,6 +1,7 @@
 #include <stdlib.h>
-#include "entity.h"
 #include "world.h"
+#include "entity.h"
+
 
 //change the seize of the chuncks and world if you want
 
@@ -95,23 +96,3 @@ void deconstruct_world(world *w){
 * entity contorl methods for contolring the actions of an entity
 */
 
-int add_entity(world *w, int x, int y, entity_type type){
-
-	chunk *c = w->loadedChunk;
-	entity *new_e = create_entity(x, y, type);
-
-	if(c->grid[x][y]->e == NULL){
-		c->grid[x][y]->e = new_e;
-		new_e->index = c->e_index;
-		c->entitys[c->e_index] = new_e; 
-		c->e_index++;
-	}else{
-		return -1;
-	}
-	return 0;
-}
-
-void turn_entity(world *w, int x, int y, direction d){
-	chunk *c = w->loadedChunk;
-	entity_turn(c->grid[x][y]->e, d);
-}

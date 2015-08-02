@@ -5,6 +5,34 @@
 static int const MAXTILE = 10;
 static int const MAXCHUNK = 10;
 
+//all fo the carnal directions
+typedef enum {
+	UP, 
+	DOWN, 
+	LEFT, 
+	RIGHT
+} direction;
+
+//all the diffrent types of entitys
+typedef enum {
+	TEST
+} entity_type;
+
+typedef struct {
+	int x, y;
+	direction dir;
+} player;
+
+typedef struct
+{
+	int x, y, index;
+	direction dir;
+	entity_type e;
+
+} entity;
+
+
+//all fo the world structs
 typedef struct {
 	int		 x, y;
 	entity 	 *e;
@@ -31,8 +59,5 @@ world * create_world();
 void deconstruct_chunk(chunk *c);
 void deconstruct_world(world *w);
 
-//methods for minplating entitys
-int add_entity(world *w, int x, int y, entity_type type);
-void turn_entity(world *w, int x, int y, direction d);
 
 #endif //WORLD_H_
