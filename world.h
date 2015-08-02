@@ -31,6 +31,8 @@ world * create_world();
 void deconstruct_chunk(chunk *c);
 void deconstruct_world(world *w);
 
+//methods for minplating entitys
 int add_entity(world *w, int x, int y, entity_type type);
+void turn_entity(world *w, int x, int y, direction d);
 
 #endif //WORLD_H_
