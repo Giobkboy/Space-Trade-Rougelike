@@ -16,3 +16,9 @@ entity * create_entity(int x, int y, entity_type type){
 
 	return e; 
 }
+
+void entity_turn(entity *e, direction d){
+	e->dir = d;
+}
+
+
