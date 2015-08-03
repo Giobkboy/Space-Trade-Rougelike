@@ -40,6 +40,10 @@ void turn_entity(world *w, int x, int y, direction d){
 	c->grid[x][y]->e->dir = d;
 }
 
+void turn_entity_obj(entity *e, direction d){
+	e->dir = d; 
+}
+
 
 /*
 * this method moves an entity
@@ -88,5 +92,9 @@ int move_entity(world *w, int x, int y){
 
 	c->grid[x][y]->e = NULL;
 	return 0;
+}
+
+int move_entity_obj(world *w, entity *e){
+	return move_entity(w, e->x, e->y);
 }
 
