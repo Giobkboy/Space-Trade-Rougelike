@@ -23,6 +23,7 @@ typedef struct {
 	direction dir;
 } player;
 
+//entity struct
 typedef struct
 {
 	int x, y, index;
