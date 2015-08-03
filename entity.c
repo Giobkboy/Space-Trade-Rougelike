@@ -1,4 +1,6 @@
 #include <stdlib.h> 
+#include <stdbool.h>
+#include <stdio.h>
 
 #include "world.h"
 #include "entity.h"
@@ -38,11 +40,53 @@ void turn_entity(world *w, int x, int y, direction d){
 	c->grid[x][y]->e->dir = d;
 }
 
-/*int move_entity(world *w, int x, int y){
+
+/*
+* this method moves an entity
+* the x and y valuse are that of the current location of
+* of the entity
+* 
+* the enity moves in the driection it is faceing
+*/
+
+int move_entity(world *w, int x, int y){
 
 	chunk *c = w->loadedChunk;
 	entity *e = c->grid[x][y]->e;
 
+	int new_x, new_y;
 
-}*/
+	switch (e->dir){
+		case UP:
+			new_x = e->x;
+			new_y = e->y + 1;
+			break;
+		case DOWN:
+			new_x = e->x; 
+			new_y = e->y - 1;
+			break;
+		case RIGHT:
+			new_x = e->x + 1;
+			new_y = e->y; 
+			break;
+		case LEFT:
+			new_x = e->x - 1;
+			new_y = e->y;
+			break; 		
+	}
+
+	if(is_outofbounds(new_x, new_y)){
+		return -1; //out of bounds
+	}else if(!is_occupied(w, new_x, new_y)){
+		printf("%d,%d\n", new_x, new_y);
+		return -2; //space occupide
+	}
+
+	c->grid[new_x][new_y]->e = e;
+	e->x = new_x;
+	e->y = new_y;
+
+	c->grid[x][y]->e = NULL;
+	return 0;
+}
 

@@ -1,4 +1,6 @@
 #include <stdlib.h>
+#include <stdio.h>
+#include <stdbool.h>
 #include "world.h"
 #include "entity.h"
 
@@ -89,6 +91,43 @@ void deconstruct_world(world *w){
 			deconstruct_chunk(w->grid[x][y]);
 		}
 	}
+}
+
+/*
+ * this method changes the currnet loaded chunk of the
+ * world
+ * takes in the cords of the chunk and a world obj
+ */
+void set_loaded_chunk(world *w, int x, int y){
+	w->loadedChunk = w->grid[x][y];
+}
+
+/*
+ * this method checks to see if two cord of out of bouns
+ * if they are it will return true other wise it will reutrn false
+ */
+bool is_outofbounds(int x, int y){
+
+	if(x >= MAXTILE || y >= MAXTILE){
+		return 1; //too high
+	}else if(x < 0 || y < 0){
+		return 1; //too low
+	}
+
+	return 0;
+}
+
+/*
+* this method checks to see if a tile is occupided by an entity
+*/
+bool is_occupied(world *w, int x, int y){
+	chunk *c = w->loadedChunk;
+
+	if(c->grid[x][y]->e == NULL){
+		return 1;
+	}
+	//printf("occupido\n");
+	return 0;
 }
 
 
