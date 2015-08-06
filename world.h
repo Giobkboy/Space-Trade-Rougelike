@@ -2,7 +2,7 @@
 #define WORLD_H_
 
 //for world and chunk size
-static int const MAXTILE = 10;
+static int const MAXTILE = 50;
 static int const MAXCHUNK = 10;
 
 //all fo the carnal directions
@@ -64,6 +64,7 @@ void deconstruct_world(world *w);
 void set_loaded_chunk(world *w, int x, int y);
 bool is_outofbounds(int x, int y);
 bool is_occupied(world *w, int x, int y);
+
 
 
 #endif //WORLD_H_

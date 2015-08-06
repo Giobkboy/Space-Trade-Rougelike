@@ -82,7 +82,6 @@ int move_entity(world *w, int x, int y){
 	if(is_outofbounds(new_x, new_y)){
 		return -1; //out of bounds
 	}else if(!is_occupied(w, new_x, new_y)){
-		printf("%d,%d\n", new_x, new_y);
 		return -2; //space occupide
 	}
 

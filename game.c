@@ -1,6 +1,7 @@
 #include <stdio.h>
 #include <stdlib.h>
 #include <stdbool.h>
+#include <curses.h>
 
 #include "world.h"
 #include "entity.h"
@@ -13,7 +14,7 @@
 void test_act(world *w, entity *e){
  	turn_entity_obj(e, UP);
  	move_entity_obj(w, e);
- 	printf("ENTITY %d: %d,%d\n", e->index, e->x, e->y);
+ 	//printf("ENTITY %d: %d,%d\n", e->index, e->x, e->y);
 }
 
 /**

@@ -1,7 +1,7 @@
-#ifndef ACT_H_
-#define ACT_H_
+#ifndef GAME_H_
+#define GAME_H_
 
 //main game loop 
 void gameloop(world *w);
 
-#endif //WORLD_H_
+#endif //GAME_H_
