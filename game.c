@@ -21,7 +21,7 @@ void test_act(world *w, entity *e){
  * main act method calls all the acts based on what type they
  * are
 */
-void act(world *w){
+void act(world *w, char op){
 	chunk *c = w->loadedChunk;
 	int i;
 
@@ -41,7 +41,7 @@ void act(world *w){
 /*
  * this is the main game loop all game logic gose in here
 */
-void gameloop(world *w){
-	act(w); 
+void gameloop(world *w, char op){
+	act(w, op); 
 }
 

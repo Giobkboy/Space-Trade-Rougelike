@@ -20,22 +20,27 @@ int main(int n, char *args[]){
     //inits ncurese window
 	initscr();
 
-	int i; 
-	for(i = 0; i < 10; i++){
+	int i;
+	char op; 
+	for(i = 0; i < 20; i++){
 		//runs game logic
-		gameloop(w);
+		gameloop(w, op);
 		//displays the current chunk
 		render_chunk(w);
 		refresh();
 
 		//waits the char is set
-		getch();
+		op = getch();
 
 		//moves the curser to 0, 0
 		move(0, 0);
 		
 	}
+
+	//kills ncurese
 	endwin();
+	deconstruct_world(w);
+
 	//printw(test);		/* Print Hello World		  */
 	//refresh();			/* Print it on to the real screen */
 	//getch();			/* Wait for user input */
@@ -51,6 +56,5 @@ int main(int n, char *args[]){
 	//printf("%d\n", is_occupied(w, 7, 4));
 	*/
 
-	deconstruct_world(w);
-
+	
 }
