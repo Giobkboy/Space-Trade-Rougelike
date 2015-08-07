@@ -59,7 +59,7 @@ void act(world *w, char op){
 	chunk *c = w->loadedChunk;
 	int i;
 
-	for(i = 0; i < c->e_index+1; i++){
+	for(i = 0; i < (MAXTILE*MAXTILE); i++){
 		if(c->entitys[i] != NULL){
 			//when you add a new type of enityt you add it to this swich statment
 			switch(c->entitys[i]->e){

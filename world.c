@@ -116,22 +116,22 @@ void load_next_chunk(world *w, entity *player){
 	
 	switch (player_direction){
 		case UP:
-			next_chunk = w->grid[current_chunk->x][current_chunk->y+1];
+			next_chunk = w->grid[current_chunk->x][current_chunk->y + 1];
 			new_y = 0;
 			new_x = player->x;
 			break;
 		case DOWN:
-			next_chunk = w->grid[current_chunk->x][current_chunk->y-1];
+			next_chunk = w->grid[current_chunk->x][current_chunk->y - 1];
 			new_y = MAXTILE-1;
 			new_x = player->x;
 			break;
 		case LEFT: 
-			next_chunk = w->grid[current_chunk->x-1][current_chunk->y];
+			next_chunk = w->grid[current_chunk->x - 1][current_chunk->y];
 			new_y = player->y;
 			new_x = MAXTILE-1;
 			break;
 		case RIGHT:
-			next_chunk = w->grid[current_chunk->x+1][current_chunk->y];
+			next_chunk = w->grid[current_chunk->x + 1][current_chunk->y];
 			new_y = player->y;
 			new_x = 0;
 			break;
@@ -142,9 +142,7 @@ void load_next_chunk(world *w, entity *player){
 	current_chunk->entitys[player->index] = NULL;
 	current_chunk->grid[player->x][player->y]->e = NULL; 
 
-	next_chunk->entitys[next_chunk->e_index] = player;
-	player->index = next_chunk->e_index;
-	next_chunk->e_index++;
+	next_chunk->entitys[player->index] = player;
 
 	next_chunk->grid[new_x][new_y]->e = player; 
 	player->x = new_x;  player->y = new_y;

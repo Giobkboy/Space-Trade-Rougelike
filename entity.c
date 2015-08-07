@@ -26,9 +26,15 @@ int add_entity(world *w, int x, int y, entity_type type){
 
 	if(c->grid[x][y]->e == NULL){
 		c->grid[x][y]->e = new_e;
-		new_e->index = c->e_index;
-		c->entitys[c->e_index] = new_e; 
-		c->e_index++;
+		
+		if(type == PLAYER){
+			c->entitys[(MAXTILE*MAXTILE) - 2] = new_e;
+			new_e->index = (MAXTILE*MAXTILE) - 2;
+		}else{
+			new_e->index = c->e_index;
+			c->entitys[c->e_index] = new_e; 
+			c->e_index++;
+		}
 	}else{
 		return -1;
 	}
