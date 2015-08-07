@@ -15,13 +15,10 @@ typedef enum {
 
 //all the diffrent types of entitys
 typedef enum {
-	TEST
-} entity_type;
+	TEST = 'T',
+	PLAYER = '@'
+} entity_type;	
 
-typedef struct {
-	int x, y;
-	direction dir;
-} player;
 
 //entity struct
 typedef struct

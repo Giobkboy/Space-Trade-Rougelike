@@ -14,6 +14,7 @@
 int main(int n, char *args[]){
 
 	world *w = create_world();
+	add_entity(w, 25, 25, PLAYER);
 	add_entity(w, 6, 4, TEST);
 	add_entity(w, 6, 5, TEST);
 

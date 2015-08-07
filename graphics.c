@@ -30,7 +30,7 @@ void render_chunk(world *w){
 
 			if(!is_occupied(w, x, y)){
 				//entiy *e = c->grid[x][y]->e;   //@TODO add spcal chars for stuff
-				grid_line[x] = 'X';
+				grid_line[x] = (char) c->grid[x][y]->e->e;
 			}else{
 				grid_line[x] = ' ';
 			}

@@ -17,6 +17,35 @@ void test_act(world *w, entity *e){
  	//printf("ENTITY %d: %d,%d\n", e->index, e->x, e->y);
 }
 
+void player_act(world *w, entity *e, char op){
+	
+	int can_move = 0;
+	direction dir;
+
+	switch (op){
+		case 'w':
+			dir = UP;
+			break;
+		case 's':
+			dir = DOWN;
+			break;
+		case 'a':
+			dir = LEFT;
+			break;
+		case 'd':
+			dir = RIGHT;
+			break;
+		default:
+			can_move = 1;
+			break;
+
+	}
+	if(can_move == 0){
+		turn_entity_obj(e, dir);
+		move_entity_obj(w, e);
+	}
+}
+
 /**
  * main act method calls all the acts based on what type they
  * are
@@ -30,6 +59,9 @@ void act(world *w, char op){
 			switch(c->entitys[i]->e){
 				case TEST:
 					test_act(w, c->entitys[i]);
+					break;
+				case PLAYER:
+					player_act(w, c->entitys[i], op);
 					break;
 				//add cases for other entitys @TODO
 			}
