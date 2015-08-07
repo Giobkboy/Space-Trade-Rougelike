@@ -59,6 +59,7 @@ void deconstruct_world(world *w);
 
 //methods for interacting with the world
 void set_loaded_chunk(world *w, int x, int y);
+void load_next_chunk(world *w, entity *player);
 bool is_outofbounds(int x, int y);
 bool is_occupied(world *w, int x, int y);
 

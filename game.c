@@ -23,10 +23,10 @@ void player_act(world *w, entity *e, char op){
 	direction dir;
 
 	switch (op){
-		case 'w':
+		case 's':
 			dir = UP;
 			break;
-		case 's':
+		case 'w':
 			dir = DOWN;
 			break;
 		case 'a':
@@ -40,9 +40,14 @@ void player_act(world *w, entity *e, char op){
 			break;
 
 	}
+	int err_code = 0;
 	if(can_move == 0){
 		turn_entity_obj(e, dir);
-		move_entity_obj(w, e);
+		err_code = move_entity_obj(w, e);
+	}
+
+	if(err_code == -1){
+		load_next_chunk(w, e);
 	}
 }
 
@@ -56,6 +61,7 @@ void act(world *w, char op){
 
 	for(i = 0; i < c->e_index+1; i++){
 		if(c->entitys[i] != NULL){
+			//when you add a new type of enityt you add it to this swich statment
 			switch(c->entitys[i]->e){
 				case TEST:
 					test_act(w, c->entitys[i]);

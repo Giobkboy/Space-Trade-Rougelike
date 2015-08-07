@@ -13,6 +13,7 @@
 void render_status(chunk *c){
 	printw("============================================================\n");
 	int i;
+	printw("Chunk: %d, %d | ", c->x, c->y);
 	for(i = 0; i < c->e_index; i++){
 		printw("Entity %d: %d,%d; ", i, c->entitys[i]->x, c->entitys[i]->y);
 	}
