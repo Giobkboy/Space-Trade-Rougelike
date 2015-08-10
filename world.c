@@ -105,47 +105,62 @@ void set_loaded_chunk(world *w, int x, int y){
 }
 
 /**
+* checks to see if the chunks cords are out of bounds
+* 
+*/
+bool is_chunk_outofbounds(int x, int y){
+	return (x >= MAXTILE-1 || y >= MAXTILE-1 || x < 0 || y < 0);
+}
+
+/**
 * if this method loads the next chunk
 */
 void load_next_chunk(world *w, entity *player){
 	direction player_direction = player->dir;	
-	chunk *next_chunk;
 	chunk *current_chunk = w->loadedChunk;
 
-	int new_x, new_y;
+	int new_x, new_y, new_cx, new_cy;
 	
 	switch (player_direction){
 		case UP:
-			next_chunk = w->grid[current_chunk->x][current_chunk->y + 1];
+			new_cx = current_chunk->x;
+			new_cy = current_chunk->y + 1;
+			//next_chunk = w->grid[current_chunk->x][current_chunk->y + 1];
 			new_y = 0;
 			new_x = player->x;
 			break;
 		case DOWN:
-			next_chunk = w->grid[current_chunk->x][current_chunk->y - 1];
+			new_cx = current_chunk->x;
+			new_cy = current_chunk->y - 1;
+
 			new_y = MAXTILE-1;
 			new_x = player->x;
 			break;
-		case LEFT: 
-			next_chunk = w->grid[current_chunk->x - 1][current_chunk->y];
+		case LEFT:
+			new_cx = current_chunk->x - 1;
+			new_cy = current_chunk->y;
 			new_y = player->y;
 			new_x = MAXTILE-1;
 			break;
 		case RIGHT:
-			next_chunk = w->grid[current_chunk->x + 1][current_chunk->y];
+			new_cx = current_chunk->x + 1;
+			new_cy = current_chunk->y;
 			new_y = player->y;
 			new_x = 0;
 			break;
 	}
-	
-	w->loadedChunk = (chunk *) next_chunk;
-	
-	current_chunk->entitys[player->index] = NULL;
-	current_chunk->grid[player->x][player->y]->e = NULL; 
 
-	next_chunk->entitys[player->index] = player;
+	if(!is_chunk_outofbounds(new_cx, new_cy)){
+		w->loadedChunk = (chunk *) w->grid[new_cx][new_cy];
+		
+		current_chunk->entitys[player->index] = NULL;
+		current_chunk->grid[player->x][player->y]->e = NULL; 
 
-	next_chunk->grid[new_x][new_y]->e = player; 
-	player->x = new_x;  player->y = new_y;
+		w->loadedChunk->entitys[player->index] = player;
+
+		w->loadedChunk->grid[new_x][new_y]->e = player; 
+		player->x = new_x;  player->y = new_y;
+	}
 	
 }
 
