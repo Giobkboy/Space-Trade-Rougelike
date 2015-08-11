@@ -5,7 +5,7 @@
 #include <ncurses.h>
 
 #include "world.h"
-#include "entity.h"
+//#include "entity.h"
 #include "game.h"
 #include "graphics.h"
 

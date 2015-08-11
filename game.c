@@ -4,7 +4,7 @@
 #include <curses.h>
 
 #include "world.h"
-#include "entity.h"
+//#include "entity.h"
 #include "game.h"
 
 /**

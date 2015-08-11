@@ -3,7 +3,6 @@
 #include <stdio.h>
 
 #include "world.h"
-#include "entity.h"
 
 entity * create_entity(int x, int y, entity_type type){
 	

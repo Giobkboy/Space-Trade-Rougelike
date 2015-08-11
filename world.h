@@ -60,8 +60,19 @@ void deconstruct_world(world *w);
 //methods for interacting with the world
 void set_loaded_chunk(world *w, int x, int y);
 void load_next_chunk(world *w, entity *player);
+bool is_chunk_outofbounds(int x, int y);
 bool is_outofbounds(int x, int y);
 bool is_occupied(world *w, int x, int y);
+
+//methods for minplating entitys
+entity * create_entity(int x, int y, entity_type type);
+int add_entity(world *w, int x, int y, entity_type type);
+
+void turn_entity(world *w, int x, int y, direction d);
+void turn_entity_obj(entity *e, direction d);
+
+int move_entity(world *w, int x, int y);
+int move_entity_obj(world *w, entity *e);
 
 
 

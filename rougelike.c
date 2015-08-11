@@ -5,7 +5,7 @@
 #include <ncurses.h>
 
 #include "world.h"
-#include "entity.h"
+//#include "entity.h"
 #include "game.h"
 #include "graphics.h"
 
@@ -28,6 +28,7 @@ int main(int n, char *args[]){
 		gameloop(w, op);
 		//displays the current chunk
 		render_chunk(w);
+
 		refresh();
 
 		//waits the char is set
@@ -35,7 +36,6 @@ int main(int n, char *args[]){
 
 		//moves the curser to 0, 0
 		move(0, 0);
-		
 	}
 
 	//kills ncurese

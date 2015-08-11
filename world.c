@@ -4,7 +4,6 @@
 #include <string.h>
 
 #include "world.h"
-#include "entity.h"
 
 
 //change the seize of the chuncks and world if you want
@@ -116,41 +115,55 @@ bool is_chunk_outofbounds(int x, int y){
 * if this method loads the next chunk
 */
 void load_next_chunk(world *w, entity *player){
+
+ 	//grabs the direction of the player
 	direction player_direction = player->dir;	
 	chunk *current_chunk = w->loadedChunk;
 
+	//all the cords in scope
 	int new_x, new_y, new_cx, new_cy;
 	
 	switch (player_direction){
 		case UP:
+			//new chunk cords
 			new_cx = current_chunk->x;
 			new_cy = current_chunk->y + 1;
-			//next_chunk = w->grid[current_chunk->x][current_chunk->y + 1];
+			
+			//where to place player
 			new_y = 0;
 			new_x = player->x;
 			break;
 		case DOWN:
+			//new chunk cords
 			new_cx = current_chunk->x;
 			new_cy = current_chunk->y - 1;
-
+			
+			//where to place player
 			new_y = MAXTILE-1;
 			new_x = player->x;
 			break;
 		case LEFT:
+			//new chunk cords
 			new_cx = current_chunk->x - 1;
 			new_cy = current_chunk->y;
+
+			//where to place player
 			new_y = player->y;
 			new_x = MAXTILE-1;
 			break;
 		case RIGHT:
+			//new chunk cords
 			new_cx = current_chunk->x + 1;
 			new_cy = current_chunk->y;
+			
+			//where to place player
 			new_y = player->y;
 			new_x = 0;
 			break;
 	}
 
 	if(!is_chunk_outofbounds(new_cx, new_cy)){
+		//loads new chunk
 		w->loadedChunk = (chunk *) w->grid[new_cx][new_cy];
 		
 		current_chunk->entitys[player->index] = NULL;
