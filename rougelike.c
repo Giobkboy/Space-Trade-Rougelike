@@ -4,10 +4,9 @@
 #include <string.h>
 #include <ncurses.h>
 
-#include "world.h"
-//#include "entity.h"
-#include "game.h"
-#include "graphics.h"
+#include "world/world.h"
+#include "gamelogic/game.h"
+#include "graphics/graphics.h"
 
 
 
